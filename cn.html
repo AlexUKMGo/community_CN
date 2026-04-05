@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>OSHIT 社区聚会</title>
+  <link rel="icon" type="image/png" href="img/Logo Neither Male or Female.png">
   <style>
     :root {
       --text-1: #111;
@@ -463,7 +464,7 @@
 
     <!-- Intro -->
     <div class="intro">
-      <p>这是一场由社区成员自发组织的线上聚会，每周一、三、五晚间固定开启。大家可以通过腾讯会议加入，一起聊聊近况、分享想法。无论你是老朋友还是新面孔，都欢迎参加。</p>
+      <p>这是一场由社区成员自发组织的线上聚会，每周二、四、日晚间固定开启。大家可以通过腾讯会议加入，一起聊聊近况、分享想法。无论你是老朋友还是新面孔，都欢迎参加。</p>
     </div>
 
     <!-- Schedule -->
@@ -475,8 +476,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <div class="mc-meta">
-            <div class="mc-title">Bom的快速会议</div>
-            <div class="mc-host">发起人：Bom</div>
+            <div class="mc-title">OSHIT 中文会议</div>
           </div>
         </div>
         <div class="mc-details">
@@ -484,7 +484,7 @@
           <div class="mc-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
             <div class="mc-row-content">
-              <div class="mc-row-main">每周一 / 周三 / 周五</div>
+              <div class="mc-row-main">每周二 / 周四 / 周日</div>
               <div class="mc-row-sub">固定周期，持续进行</div>
             </div>
           </div>
@@ -500,7 +500,7 @@
           <div class="mc-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <div class="mc-row-content">
-              <div class="mc-row-main mono">518-491-466</div>
+              <div class="mc-row-main mono">788-9500-8703</div>
               <div class="mc-row-sub">腾讯会议号</div>
             </div>
           </div>
@@ -511,7 +511,7 @@
       <div class="next-session" id="nextSession"></div>
 
       <div class="actions">
-        <a href="https://meeting.tencent.com/dm/Yp9x6RdOOVOg" class="btn btn-dark" target="_blank">
+        <a href="https://meeting.tencent.com/dm/join-by-code?meetingcode=78895008703" class="btn btn-dark" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
           加入会议
         </a>
@@ -566,7 +566,7 @@
 
 <script>
 // ---- Schedule logic ----
-const MEET_DAYS = [1, 3, 5];
+const MEET_DAYS = [0, 2, 4];
 const MEET_HOUR = 20;
 const MEET_DURATION = 60;
 const WEEKDAY_CN = ['周日','周一','周二','周三','周四','周五','周六'];
@@ -625,14 +625,10 @@ renderStatus();
 setInterval(renderStatus, 30000);
 
 // ---- Copy ----
-const meetingText = `Bom 邀请您参加腾讯会议（社区聚会）
-会议主题：Bom的快速会议
-会议时间：每周一、三、五 20:00-21:00 (GMT+08:00) 北京时间
+const meetingText = `OSHIT 中文会议
+会议时间：每周二、四、日 20:00-21:00 (GMT+08:00) 北京时间
 
-点击链接直接加入会议：
-https://meeting.tencent.com/dm/Yp9x6RdOOVOg
-
-#腾讯会议：518-491-466`;
+#腾讯会议：788-9500-8703`;
 
 function copyInfo(){
   const btn=document.getElementById('copyBtn');
