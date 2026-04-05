@@ -50,39 +50,33 @@
     .back-btn:active { opacity: 0.7; }
     .back-btn svg { width: 22px; height: 22px; color: #fff; stroke-width: 3; }
 
-    /* ========== GLOBAL BANNER ========== */
-    .global-banner {
+    /* ========== GLOBAL COMMUNITY LINK ========== */
+    .global-link {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 18px 20px;
       background: #111;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
+      border-radius: var(--radius);
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
     }
-    .global-banner:active { background: #222; }
-    .global-banner .gb-left {
+    .global-link:active { background: #222; }
+    .gl-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .global-banner .gb-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #818cf8;
-      animation: gpulse 2s infinite;
-    }
-    @keyframes gpulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .global-banner svg {
-      width: 16px; height: 16px; color: rgba(255,255,255,0.5);
-    }
+    .gl-icon svg { width: 22px; height: 22px; color: #818cf8; }
+    .gl-text { flex: 1; min-width: 0; }
+    .gl-title { font-size: 16px; font-weight: 700; color: #fff; }
+    .gl-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .gl-arrow { width: 18px; height: 18px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
 
     /* ========== HERO ========== */
     .hero {
@@ -437,15 +431,6 @@
 
 <div class="page">
 
-  <!-- Global Community Banner -->
-  <a href="index.html" class="global-banner">
-    <div class="gb-left">
-      <div class="gb-dot"></div>
-      <span>Visit OSHIT Global Community</span>
-    </div>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </a>
-
   <!-- Hero Banner -->
   <div class="hero">
     <a href="https://oshit.io/phone/staking" class="back-btn">
@@ -461,6 +446,18 @@
   </div>
 
   <div class="body-content">
+
+    <!-- Global Community Link -->
+    <a href="index.html" class="global-link">
+      <div class="gl-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="gl-text">
+        <div class="gl-title">OSHIT 全球社区</div>
+        <div class="gl-sub">了解更多社区动态与活动</div>
+      </div>
+      <svg class="gl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
 
     <!-- Intro -->
     <div class="intro">
