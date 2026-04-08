@@ -433,7 +433,7 @@
 
   <!-- Hero Banner -->
   <div class="hero">
-    <a href="https://oshit.io/phone/staking" class="back-btn">
+    <a href="https://oshit.io/phone/staking" class="back-btn js-smart-back" data-fallback="https://oshit.io/phone/staking">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </a>
     <img src="img/cn/8.jpg" alt="社区合影">
@@ -448,7 +448,7 @@
   <div class="body-content">
 
     <!-- Global Community Link -->
-    <a href="index.html" class="global-link">
+    <a href="index.html" class="global-link js-internal-switch">
       <div class="gl-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
@@ -652,6 +652,46 @@ function showToast(){
   const t=document.getElementById('toast');
   t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);
 }
+function isInternalCommunityPage(url) {
+  try {
+    const parsed = new URL(url, window.location.href);
+    const path = parsed.pathname.toLowerCase();
+    return parsed.origin === window.location.origin &&
+      (path.endsWith('/cn.html') || path.endsWith('/index.html') || path.endsWith('/about.html'));
+  } catch {
+    return false;
+  }
+}
+
+document.querySelectorAll('.js-smart-back').forEach(link => {
+  link.addEventListener('click', event => {
+    const fallback = link.dataset.fallback || link.href;
+    const canGoBack = window.history.length > 1;
+    const referrer = document.referrer;
+
+    if (canGoBack && referrer && !isInternalCommunityPage(referrer)) {
+      event.preventDefault();
+      window.history.back();
+      return;
+    }
+
+    if (fallback) {
+      event.preventDefault();
+      window.location.href = fallback;
+    }
+  });
+});
+
+document.querySelectorAll('.js-internal-switch').forEach(link => {
+  link.addEventListener('click', event => {
+    const target = link.getAttribute('href');
+    if (!target) return;
+
+    event.preventDefault();
+    window.location.replace(target);
+  });
+});
+
 function openLB(el){
   document.getElementById('lightboxImg').src=el.querySelector('img').src;
   document.getElementById('lightbox').classList.add('active');

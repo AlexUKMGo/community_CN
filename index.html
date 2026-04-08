@@ -467,7 +467,7 @@
 <body>
 
 <!-- Back -->
-<a href="https://oshit.io/phone/staking" class="back-btn">
+<a href="https://oshit.io/phone/staking" class="back-btn js-smart-back" data-fallback="https://oshit.io/phone/staking">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
 </a>
 
@@ -721,6 +721,36 @@ function closeLB(e) {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
+
+function isInternalCommunityPage(url) {
+  try {
+    const parsed = new URL(url, window.location.href);
+    const path = parsed.pathname.toLowerCase();
+    return parsed.origin === window.location.origin &&
+      (path.endsWith('/cn.html') || path.endsWith('/index.html') || path.endsWith('/about.html'));
+  } catch {
+    return false;
+  }
+}
+
+document.querySelectorAll('.js-smart-back').forEach(link => {
+  link.addEventListener('click', event => {
+    const fallback = link.dataset.fallback || link.href;
+    const canGoBack = window.history.length > 1;
+    const referrer = document.referrer;
+
+    if (canGoBack && referrer && !isInternalCommunityPage(referrer)) {
+      event.preventDefault();
+      window.history.back();
+      return;
+    }
+
+    if (fallback) {
+      event.preventDefault();
+      window.location.href = fallback;
+    }
+  });
+});
 </script>
 </body>
 </html>
